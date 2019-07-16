@@ -997,7 +997,7 @@
 	 */
 	Gamepad.prototype._update = function() {
 		this.platform.update();
-
+		// this.gamepads = navigator.getGamepads(); /** think I need to bind to navigator.getGamepads() in place of this.gamepads
 		this.gamepads.forEach(function(gamepad) {
 			if (gamepad) {
 				gamepad.updater.forEach(function(updater) {
