@@ -5,6 +5,7 @@
   "latedef": true,
   "quotmark": true,
   "undef": true,
+  "devel": true,
   "strict": true,
   "globalstrict": true,
   "maxparams": 5,

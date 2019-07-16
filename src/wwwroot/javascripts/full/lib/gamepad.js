@@ -225,10 +225,10 @@
 	var FirefoxPlatform = function(listener) {
 		this.listener = listener;
 
-		window.addEventListener('MozGamepadConnected', function(e) {
+		window.addEventListener('gamepadconnected', function(e) {
 			listener._connect(e.gamepad);
 		});
-		window.addEventListener('MozGamepadDisconnected', function(e) {
+		window.addEventListener('gamepaddisconnected', function(e) {
 			listener._disconnect(e.gamepad);
 		});
 	};
@@ -836,14 +836,14 @@
 			if (entry !== -1) {
 				if ((typeof(entry) === 'number') && (entry < gamepad.buttons.length)) {
 					getter = function() {
-						return gamepad.buttons[entry];
+						return navigator.getGamepads()[0].buttons[entry];
 					};
 				}
 			} else if (buttons.byAxis && (index < buttons.byAxis.length)) {
 				entry = buttons.byAxis[index];
 				if (isArray(entry) && (entry.length == 3) && (entry[0] < gamepad.axes.length)) {
 					getter = function() {
-						var value = gamepad.axes[entry[0]];
+						var value = navigator.getGamepads()[0].axes[entry[0]];
 
 						return that._applyDeadzoneMaximize(value);
 					};
@@ -883,7 +883,7 @@
 			if (entry !== -1) {
 				if ((typeof(entry) === 'number') && (entry < gamepad.axes.length)) {
 					getter = function() {
-						var value = gamepad.axes[entry];
+						var value = navigator.getGamepads()[0].axes[entry];
 
 						return that._applyDeadzoneMaximize(value);
 					};
