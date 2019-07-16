@@ -1,4 +1,3 @@
-
 /**
 Containing defaults
 
@@ -6,7 +5,7 @@ Containing defaults
 @class Defaults
 */
 define('Defaults',[], function() {
-  
+  "use strict";
 
   var defaults = {
     inputsByAction: {}
@@ -38,17 +37,20 @@ define('ui/UiTemplates',['jade'], function(jade) { if(jade && jade['runtime'] !=
 
 this["UiTemplates"] = this["UiTemplates"] || {};
 
-this["UiTemplates"]["AddPropDialog"] = function anonymous(locals) {
+this["UiTemplates"]["AddPropDialog"] = function anonymous(locals
+) {
 var buf = [];
 buf.push("<div class=\"modal-header\"><h3>Add a prop</h3></div><div class=\"modal-body\"><div class=\"row-fluid\"><input type=\"text\" ng-model=\"search.text\" placeholder=\"Blank separated search words\" class=\"span12\"/></div><div class=\"row-fluid\"><tabset class=\"span12\"><tab heading=\"Ship\"><div class=\"row-fluid\"><select ng-model=\"search.selected\" ng-options=\"prop as prop.propData.resourceUrl for prop in filteredShips\" size=\"10\" class=\"span12\"></select></div></tab><tab heading=\"Planet\"><div class=\"row-fluid\"><select ng-model=\"search.selected\" ng-options=\"prop as prop.propData.resourceUrl for prop in filteredPlanets\" size=\"10\" class=\"span12\"></select></div></tab><tab heading=\"Scenery\"><div class=\"row-fluid\"><select ng-model=\"search.selected\" ng-options=\"prop as prop.propData.resourceUrl for prop in filteredSceneries\" size=\"10\" class=\"span12\"></select></div></tab></tabset></div></div><div class=\"modal-footer\"><button ng-click=\"add(search.selected)\" ng-disabled=\"!search.selected\" class=\"btn btn-primary\">Add</button><button ng-click=\"cancel()\" class=\"btn\">Cancel</button></div>");;return buf.join("");
 };
 
-this["UiTemplates"]["CreateSessionDialog"] = function anonymous(locals) {
+this["UiTemplates"]["CreateSessionDialog"] = function anonymous(locals
+) {
 var buf = [];
 buf.push("<div class=\"modal-header\"><h3>Create a Session</h3><span>eve-kino v.{{version}}</span></div><div class=\"modal-body\"><tabset><tab heading=\"Background\"><div class=\"btn-group\"><button type=\"button\" ng-model=\"set.type\" btn-radio=\"'space'\" class=\"btn\">Space</button><button type=\"button\" ng-model=\"set.type\" btn-radio=\"'chromaKey'\" class=\"btn\">Chroma Key</button></div><div class=\"row-fluid\"><div ng-show=\"(set.type == 'space')\">Select a background:<div class=\"row-fluid\"><select ng-model=\"set.selectedBackground\" ng-options=\"bg as bg.resourceUrl for bg in backgrounds\" size=\"5\" class=\"span12\"></select></div></div><div ng-show=\"(set.type == 'chromaKey')\">Pick a color (RGB values):<div data-color-input color=\"set.chromaKey.color\" on-change=\"colorInputChanged()\"></div></div></div></tab><tab heading=\"By File\"><div data-file-input=\"file\" on-change=\"readFile(file)\">Choose File</div></tab><tab heading=\"Quality\"><div ng-repeat=\"option in qualityOptions\" class=\"row-fluid\"><div class=\"span4\">{{option.title}}</div><div class=\"span8 btn-group\"><button type=\"button\" ng-repeat=\"value in option.values\" ng-model=\"selectedOptions[option.field]\" btn-radio=\"value.id\" class=\"btn\">{{value.title}}</button></div></div><div class=\"row-fluid\"><div class=\"span12\">Some of these settings are dependent on machine or resources and might not be available.</div></div></tab></tabset></div><div class=\"modal-footer\"><button ng-click=\"create(set.type)\" ng-disabled=\"!canBeCreated()\" class=\"btn btn-primary\">Create</button></div>");;return buf.join("");
 };
 
-this["UiTemplates"]["SplashDialog"] = function anonymous(locals) {
+this["UiTemplates"]["SplashDialog"] = function anonymous(locals
+) {
 var buf = [];
 buf.push("<div class=\"modal-header\"><h3>{{ title }}</h3></div><div class=\"modal-body\">{{ message }}</div>");;return buf.join("");
 };
@@ -67,7 +69,7 @@ controlled.
 define('ui/SplashDialog',["ui/UiTemplates"],
 
 function(templates) {
-  
+  "use strict";
 
   var name = "SplashDialogController";
   var template = templates.SplashDialog();
@@ -119,7 +121,7 @@ This validator handles session data
 @class SessionValidator
 */
 define('util/validators/SessionValidator',["lib/jski"], function(jski) {
-  
+  "use strict";
 
   var setSpaceBackground = jski.object({
     space: jski.object({
@@ -186,7 +188,7 @@ This dialog is responsible for determining the parameters of a session to be cre
 define('ui/CreateSessionDialog',["version", "ui/UiTemplates", "util/validators/SessionValidator"],
 
   function(version, templates, SessionValidator) {
-    
+    "use strict";
 
     var name = "CreateSessionDialogController";
     var template = templates.CreateSessionDialog();
@@ -322,7 +324,7 @@ This dialog is helping to add a prop to the scene
 define('ui/AddPropDialog',["ui/UiTemplates"],
 
   function(templates) {
-    
+    "use strict";
 
     var name = "AddPropDialogController";
     var template = templates.AddPropDialog();
@@ -442,7 +444,7 @@ This is a helper object to collect all dialogs
 define('ui/Dialogs',["ui/SplashDialog", "ui/CreateSessionDialog", "ui/AddPropDialog"],
 
   function(splashDialog, createSessionDialog, addPropDialog) {
-    
+    "use strict";
 
     var dialogs = {
       splashDialog: splashDialog,
@@ -460,7 +462,7 @@ for GL related topics.
 @class GlHelper
 */
 define('util/GlHelper',["lib/gl-matrix"], function(glMatrix) {
-  
+  "use strict";
 
   // ccpwgl extends mat4 with this multiply3x3 function; Since glMatrix is
   // re-loaded, this extension is lost, so reintroduce it here.
@@ -537,7 +539,7 @@ The motor moves from one extreme to the other using the maximum time.
 @class Actuator
 */
 define('simulation/Actuator',[], function() {
-  
+  "use strict";
 
   var Actuator = function(timeWatch, timeSpan) {
     this.timeWatch = timeWatch;
@@ -584,7 +586,7 @@ were real, it would provide thrust according a table, defying physics)
 @class SimulatedThruster
 */
 define('simulation/SimulatedThruster',[], function() {
-  
+  "use strict";
 
   /**
    * @constructor
@@ -619,7 +621,7 @@ The helper is a static object providing some helper methods for mathematics.
 @class MathHelper
 */
 define('util/MathHelper',[], function() {
-  
+  "use strict";
 
   var getPointOnLine = function(pointA, pointB, offset) {
     var result = {
@@ -673,7 +675,7 @@ An animator is responsible for updating the state of a prop
 */
 define('production/Animator',["lib/gl-matrix", "util/GlHelper", "simulation/Actuator", "simulation/SimulatedThruster", "util/MathHelper"],
   function(glMatrix, helper, Actuator, SimulatedThruster, mathHelper) {
-    
+    "use strict";
 
     var tempQuat = glMatrix.quat4.create();
     var tempVec3 = glMatrix.vec3.create();
@@ -825,7 +827,7 @@ The Stage Manager updates the stage according to the script and/or input
 @class StageManager
 */
 define('production/StageManager',["production/Animator"], function(Animator) {
-  
+  "use strict";
 
   var StageManager = function(stage, timeWatch) {
     this.stage = stage;
@@ -893,7 +895,7 @@ A command channel provides commands based on inputs
 @class CommandChannel
 */
 define('controls/CommandChannel',[], function() {
-  
+  "use strict";
 
   var CommandChannel = function(owner, id, type, actions) {
     this.owner = owner;
@@ -938,7 +940,7 @@ An input channel delivers inputs from a source
 @class InputChannel
 */
 define('controls/InputChannel',[], function() {
-  
+  "use strict";
 
   var InputChannel = function(owner, id, type) {
     this.owner = owner;
@@ -963,7 +965,7 @@ A director issues directions
 @class Director
 */
 define('production/Director',["controls/CommandChannel", "controls/InputChannel"], function(CommandChannel, InputChannel) {
-  
+  "use strict";
 
   var Director = function() {
     this.bindings = {};
@@ -1053,7 +1055,7 @@ A camera operator handles a camera when directed to
 */
 define('production/CameraOperator',["lib/gl-matrix", "util/GlHelper", "simulation/Actuator", "simulation/SimulatedThruster", "util/MathHelper"],
   function(glMatrix, helper, Actuator, SimulatedThruster, mathHelper) {
-    
+    "use strict";
 
     var actionNames = [
       "pitchUp", "pitchDown", "rollClockwise", "rollCounter", "yawRight", "yawLeft",
@@ -1267,7 +1269,7 @@ define('production/CameraOperator',["lib/gl-matrix", "util/GlHelper", "simulatio
 @class Resource
 */
 define('production/Resources',["production/StageManager", "production/Director", "production/CameraOperator"], function(StageManager, Director, CameraOperator) {
-  
+  "use strict";
 
   var resources = {
     StageManager: StageManager,
@@ -1284,7 +1286,7 @@ The gamepad API provides a wrapper around the used gamepad interface
 @class GamepadApi
 */
 define('controls/Gamepad',["lib/gamepad"], function(GamepadLib) {
-  
+  "use strict";
 
   var Gamepad = function(runtimeId) {
     this.listeners = [];
@@ -1319,7 +1321,7 @@ The gamepad API provides a wrapper around the used gamepad interface
 @class GamepadApi
 */
 define('controls/GamepadApi',["lib/gamepad", "controls/Gamepad"], function(GamepadLib, Gamepad) {
-  
+  "use strict";
 
   var GamepadApi = function() {
     this.lib = new GamepadLib();
@@ -1417,7 +1419,7 @@ The ship wrapper
 @class Ship
 */
 define('production/ccp/res/Ship',["lib/gl-matrix"], function(glMatrix) {
-  
+  "use strict";
 
   var Ship = function(ccpwgl, obj, id, propData) {
     this.ccpwgl = ccpwgl;
@@ -1464,7 +1466,7 @@ An archetype for ships
 @class ShipArchetype
 */
 define('production/ccp/res/ShipArchetype',["production/ccp/res/Ship"], function(Ship) {
-  
+  "use strict";
 
   var ShipArchetype = function(propData) {
     this.propData = propData || {};
@@ -1496,7 +1498,7 @@ The planet wrapper
 @class Planet
 */
 define('production/ccp/res/Planet',["lib/gl-matrix"], function(glMatrix) {
-  
+  "use strict";
 
   var Planet = function(obj, id, propData) {
     this.obj = obj;
@@ -1549,7 +1551,7 @@ An archetype for planets
 @class PlanetArchetype
 */
 define('production/ccp/res/PlanetArchetype',["production/ccp/res/Planet"], function(Planet) {
-  
+  "use strict";
 
   var PlanetArchetype = function(propData) {
     this.propData = propData;
@@ -1604,7 +1606,7 @@ The Scenery wrapper
 @class Scenery
 */
 define('production/ccp/res/Scenery',["lib/gl-matrix"], function(glMatrix) {
-  
+  "use strict";
 
   var Scenery = function(ccpwgl, obj, id, propData) {
     this.ccpwgl = ccpwgl;
@@ -1651,7 +1653,7 @@ An archetype for sceneries (generic objects that can only be placed/rotated)
 @class SceneryArchetype
 */
 define('production/ccp/res/SceneryArchetype',["production/ccp/res/Scenery"], function(Scenery) {
-  
+  "use strict";
 
   var SceneryArchetype = function(propData) {
     this.propData = propData || {};
@@ -1683,7 +1685,7 @@ A track stores data for one thing in a recording
 @class Track
 */
 define('production/Track',[], function() {
-  
+  "use strict";
 
   var Track = function(data) {
     this.data = data;
@@ -1746,7 +1748,7 @@ A reel contains one or more tracks and keeps them in sync
 @class Reel
 */
 define('production/Reel',[], function() {
-  
+  "use strict";
 
   var Reel = function() {
     this.tracks = [];
@@ -1797,7 +1799,7 @@ for browser access.
 @class BrowserHelper
 */
 define('util/BrowserHelper',[], function() {
-  
+  "use strict";
 
   /**
    * Tries to find a property with prefixes for the common browsers on a
@@ -1844,7 +1846,7 @@ It tries to use high performance time interface before falling back to Date().
 @class SystemTimeSource
 */
 define('util/time/SystemTimeSource',["util/BrowserHelper"], function(browserHelper) {
-  
+  "use strict";
 
   // http://www.w3.org/TR/hr-time/#sec-DOMHighResTimeStamp
   var performance = window.performance || {};
@@ -1876,7 +1878,7 @@ This is a time source that provides a second count based on a sync clock.
 @class ClockedTimeSource
 */
 define('util/time/ClockedTimeSource',[], function() {
-  
+  "use strict";
 
   var ClockedTimeSource = function(hertz) {
     this.hertz = hertz;
@@ -1919,7 +1921,7 @@ This time watch keeps track of deltas between calls of setTime() .
 @class TimeWatch
 */
 define('util/time/TimeWatch',[], function() {
-  
+  "use strict";
 
   var TimeWatch = function(initTime) {
     this.reset(initTime || 0);
@@ -1968,7 +1970,7 @@ define('ApplicationController',["lib/q", "Defaults", "ui/Dialogs", "production/R
 
   function(q, defaults, uiDialogs, Resources, GamepadApi, ShipArchetype, PlanetArchetype, SceneryArchetype, Track, Reel,
     SystemTimeSource, ClockedTimeSource, TimeWatch) {
-    
+    "use strict";
 
     var addPlanet = function(resLibrary, itemId, resourceUrl, atmosphereUrl, heightMap1Url, heightMap2Url) {
       var arch = new PlanetArchetype({
@@ -2478,7 +2480,7 @@ The sync source provides a callback mechanism for black-burst synchronization.
 @class SyncSource
 */
 define('production/ccp/SyncSource',[], function() {
-  
+  "use strict";
 
   var clockRate = 60; // as per requestAnimFrame
 
@@ -2513,7 +2515,7 @@ The set provides access to all necessary set properties
 @class Set
 */
 define('production/ccp/Set',[], function() {
-  
+  "use strict";
 
   var Set = function(components) {
     this.ccpwgl = components.ccpwgl;
@@ -2549,7 +2551,7 @@ The Stage holds all the set pieces and actors
 @class Stage
 */
 define('production/ccp/Stage',["lib/q"], function(q) {
-  
+  "use strict";
 
   var Stage = function(ccpwgl, scene) {
     this.ccpwgl = ccpwgl;
@@ -2600,7 +2602,7 @@ implementation to provide the projection and view matrices.
 @class SceneCamera
 */
 define('production/ccp/SceneCamera',["lib/gl-matrix", "util/GlHelper"], function(glMatrix, helper) {
-  
+  "use strict";
 
   var SceneCamera = function() {
     this.fov = 60;
@@ -2696,7 +2698,7 @@ The light board provides access to lighting controls
 @class LightBoard
 */
 define('production/ccp/LightBoard',["lib/q"], function(q) {
-  
+  "use strict";
 
   var SunLoadedState = function() {
     this.context = null;
@@ -2834,7 +2836,7 @@ A list of archetypes
 @class ArchetypeList
 */
 define('production/ccp/res/ArchetypeList',["production/ccp/res/PlanetArchetype", "production/ccp/res/SceneryArchetype", "production/ccp/res/ShipArchetype"], function() {
-  
+  "use strict";
 
   var list = [];
   var i;
@@ -2853,7 +2855,7 @@ the production manager.
 @class ResourceLibrary
 */
 define('production/ResourceLibrary',[], function() {
-  
+  "use strict";
 
   var ResourceLibrary = function(namespace) {
     this.namespace = namespace;
@@ -2897,7 +2899,7 @@ define('production/ccp/ProductionManager',["lib/q", "production/ccp/SyncSource",
   ],
 
   function(q, SyncSource, Set, Stage, SceneCamera, LightBoard, archetypeList, ResourceLibrary, ccpStandardGraphicIds) {
-    
+    "use strict";
 
     var archetypesByType = {};
     var standardResourceLibrary = null;
@@ -3196,7 +3198,7 @@ Source: http://odetocode.com/blogs/scott/archive/2013/07/03/building-a-filereade
 @class FileInputDirective
 */
 define('services/FileReaderService',[], function() {
-  
+  "use strict";
 
   var fileReader = function($q) {
 
@@ -3257,7 +3259,7 @@ The Service list collects all services
 */
 define('services/ServiceList',["services/FileReaderService"],
   function() {
-    
+    "use strict";
 
     var directives = [];
     var i;
@@ -3276,7 +3278,7 @@ The Controller list collects all controller modules
 */
 define('ui/ControllerList',["ui/SplashDialog", "ui/CreateSessionDialog", "ui/AddPropDialog"],
   function() {
-    
+    "use strict";
 
     var controller = [];
     var i;
@@ -3295,7 +3297,7 @@ its contained port.
 @class FilmViewDirective
 */
 define('directives/FilmViewDirective',["util/BrowserHelper"], function(browserHelper) {
-  
+  "use strict";
 
   var watchFullScreen = function($window, callback) {
     var document = $window.document;
@@ -3394,7 +3396,7 @@ The data-save-as directive handles saving of the session to a file.
 @class SaveAsDirective
 */
 define('directives/SaveAsDirective',["util/BrowserHelper"], function(browserHelper) {
-  
+  "use strict";
 
   var register = function(angular, appModule) {
     appModule.directive("saveAs", function($window) {
@@ -3443,7 +3445,7 @@ The data-file-input directive is for adding a change event to a file input.
 @class FileInputDirective
 */
 define('directives/FileInputDirective',[], function() {
-  
+  "use strict";
 
   var register = function(angular, appModule) {
     appModule.directive("fileInput", function($parse) {
@@ -3483,7 +3485,7 @@ The data-color-input directive is for handling a color value
 @class ColorInputDirective
 */
 define('directives/ColorInputDirective',[], function() {
-  
+  "use strict";
 
   var partToHex = function(part) {
     var fixedNumberText = (part * 255.0).toFixed(0);
@@ -3582,7 +3584,7 @@ The Directive list collects all directives
 define('directives/DirectiveList',["directives/FilmViewDirective", "directives/SaveAsDirective", "directives/FileInputDirective", "directives/ColorInputDirective"],
 
   function() {
-    
+    "use strict";
 
     var directives = [];
     var i;
@@ -3603,7 +3605,7 @@ ClientApp is the primary entry point for the main client side application
 define('ClientApp',["module", "angular", "lib/ccpwgl", "ApplicationController", "production/ccp/ProductionManager", "services/ServiceList", "ui/ControllerList", "directives/DirectiveList"],
 
   function(module, angular, ccpwgl, appController, ProductionManager, serviceList, controllerList, directiveList) {
-    
+    "use strict";
 
     var config = module.config();
 
