@@ -299,7 +299,7 @@
 		this.gamepads = [];
 		this.listeners = {};
 		this.platform = nullPlatform;
-		this.deadzone = 0.03;
+		this.deadzone = 0.06;
 		this.maximizeThreshold = 0.97;
 	};
 
