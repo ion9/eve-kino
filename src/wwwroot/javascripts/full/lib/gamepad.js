@@ -836,7 +836,7 @@
 			if (entry !== -1) {
 				if ((typeof(entry) === 'number') && (entry < gamepad.buttons.length)) {
 					getter = function() {
-						return navigator.getGamepads()[0].buttons[entry];
+						return navigator.getGamepads()[0].buttons[entry].value;
 					};
 				}
 			} else if (buttons.byAxis && (index < buttons.byAxis.length)) {
@@ -997,9 +997,19 @@
 	 */
 	Gamepad.prototype._update = function() {
 		this.platform.update();
-		// this.gamepads = navigator.getGamepads(); /** think I need to bind to navigator.getGamepads() in place of this.gamepads
+		// console.log(this.gamepads);
+		// if (navigator.getGamepads()[0]) {
+		// 	this.gamepads[0].axes = navigator.getGamepads()[0].axes; /** think I need to bind to navigator.getGamepads() in place of this.gamepads **/
+		// 	this.gamepads[0].buttons = navigator.getGamepads()[0].buttons;
+		// }
+		// console.log(this.gamepads);
 		this.gamepads.forEach(function(gamepad) {
 			if (gamepad) {
+				// console.log(gamepad);
+				// gamepad.buttons.prop('readonly', false);
+				// gamepad.axes.prop('readonly', false);
+				// gamepad.buttons = navigator.getGamepads()[0].buttons;
+				// gamepad.axes = navigator.getGamepads()[0].axes;
 				gamepad.updater.forEach(function(updater) {
 					updater();
 				});
