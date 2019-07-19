@@ -2,7 +2,9 @@
 
 eve-kino is a web application to generate short movies using the art assets of EVE Online.
 
-**This project has been discontinued. If you find some re-use, I'd be happy about a reference.**
+I wanted to see what it was like back in the day to i got the input working.
+
+**This project has been discontinued. If you find some re-use, dertseha would be happy about a reference.**
 
 Using the WebGL library from CCP, ccpwgl, this project provides a browser application to create spaceship animations.
 The production mirrors the recording of film; Instead of modifying orientation/position parameters by hand per frame, the actors (ships, ...)
