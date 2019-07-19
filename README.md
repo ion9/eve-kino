@@ -2,7 +2,7 @@
 
 eve-kino is a web application to generate short movies using the art assets of EVE Online.
 
-I wanted to see what it was like back in the day to i got the input working.
+I wanted to see what it was like back in the day, so I got the input working.
 
 **This project has been discontinued. If you find some re-use, dertseha would be happy about a reference.**
 
