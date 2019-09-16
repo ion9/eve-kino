@@ -21,16 +21,16 @@
   },
   "dependencies": {
     "buster-server": "^0.2.2",
+    "ccpwgl2": "git+https://github.com/cppctamber/ccpwgl2.git",
     "express": "3.2.x",
     "grunt-buster": "^0.4.2",
     "jade": "*",
     "nconf": "0.6.x",
-    "socket.io": "^2.0.4",
-    "winston": "0.7.x",
-    "ccpwgl2": "git+https://github.com/cppctamber/ccpwgl2.git"
+    "socket.io": "^2.2.0",
+    "winston": "0.7.x"
   },
   "devDependencies": {
-    "buster": "~0.6.12",
+    "buster": "~0.7.6",
     "buster-amd": "~0.3.0",
     "buster-istanbul": "~0.1.7",
     "grunt": "~0.4.1",
