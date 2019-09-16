@@ -26,7 +26,8 @@
     "jade": "*",
     "nconf": "0.6.x",
     "socket.io": "^2.0.4",
-    "winston": "0.7.x"
+    "winston": "0.7.x",
+    "ccpwgl2": "git+https://github.com/cppctamber/ccpwgl2.git"
   },
   "devDependencies": {
     "buster": "~0.6.12",

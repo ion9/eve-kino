@@ -8,6 +8,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: pkg,
 
+    // Copy the CCPWGL lib to server lib directories
+    copyccpwgl: {
+      client: {
+        files: [{
+          src: "node_modules/ccpwgl/dist/ccpwgl.js",
+          dest: "src/client/lib/ccpwgl.js"
+        }]
+      }
+    },    
     // Run JSHint on all sources, excluding the generated or imported client scripts
     jshint: {
       options: {
