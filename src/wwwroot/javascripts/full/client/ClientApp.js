@@ -2961,7 +2961,8 @@ define('production/ccp/ProductionManager',["lib/q", "production/ccp/SyncSource",
     };
 
     ProductionManager.STANDARD_RES_NAMESPACE = "res";
-    ProductionManager.STANDARD_RES_URL = "//web.ccpgamescdn.com/ccpwgl/res/";
+    // ProductionManager.STANDARD_RES_URL = "//web.ccpgamescdn.com/ccpwgl/res/";
+    ProductionManager.STANDARD_RES_URL = "//developers.eveonline.com/ccpwgl/assetpath/860161/";
 
     var sceneRegExp = /.*\/scene\/.*red$/i;
     var shipRegExp = /.*\/model\/ship\/.*red$/i;

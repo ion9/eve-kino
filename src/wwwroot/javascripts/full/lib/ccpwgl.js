@@ -1,4 +1,5 @@
-﻿var ccpwgl = (function (ccpwgl_int)
+﻿console.log("useing new code");
+var ccpwgl = (function (ccpwgl_int)
 {
     var ccpwgl = {};
 

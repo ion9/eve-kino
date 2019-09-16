@@ -12,8 +12,11 @@ module.exports = function(grunt) {
     copyccpwgl: {
       client: {
         files: [{
-          src: "node_modules/ccpwgl/dist/ccpwgl.js",
-          dest: "src/client/lib/ccpwgl.js"
+          src: "node_modules/ccpwgl2/dist/ccpwgl.js",
+          dest: "src/wwwroot/javascripts/full/lib/ccpwgl.js"
+        },{
+          src: "node_modules/ccpwgl2/dist/ccpwgl2_int.js",
+          dest: "src/wwwroot/javascripts/full/lib/ccpwgl_int.js"
         }]
       }
     },    
